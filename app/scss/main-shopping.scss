@@ -1,0 +1,128 @@
+.container-shopping {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.shopping{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.shopping-item{
+    position: relative;
+    max-width: 550px;
+    height: 100%;
+    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.493);
+    border:1px solid rgba(49, 49, 48, 0.233);
+    border-radius: 5px;
+    display: flex;
+    margin: 1em 1em;
+    overflow: hidden;
+}
+.item-area{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+    margin: 10px;
+}
+
+.images{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    &__item{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        opacity: 0;
+        transition: opacity .2s linear;
+    }
+}
+.images__item--active{
+    opacity: 100%;
+    transition: opacity .2s linear;
+}
+.navigation{
+    display: flex;
+    position: absolute;
+    bottom: 3px;
+
+    &__circle{
+        width: 25px;
+        height: 25px;
+        background-color: rgba(204, 204, 204, 0.63);
+        border-radius: 50%;
+        margin: 0 5px;
+        cursor: pointer;
+        transition: background .2s ease-in;
+    }
+}
+.navigation__circle--active{
+    background: rgb(0, 0, 0);
+    box-shadow: 0 0 5px rgb(0, 0, 0);
+}
+
+.information-item{
+    background: antiquewhite;
+    border-left:1px solid rgba(187, 168, 143, 0.644);
+    padding: 10px;
+    width: 100%;
+   &__title{
+    display: flex;
+    justify-content: center;
+
+   }
+   &__about{
+    display: flex;
+    justify-content: center;
+   }
+   &__price{
+       font-weight: 500;
+       font-size: 25px;
+       margin: 10px 0 ;
+   }
+}
+
+.btn-area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__btn{
+        border: none;
+        background: black;
+     
+        color: rgb(255, 255, 255);
+        border-radius: 4px;
+        margin: 10px 0 0 0;
+        padding: 10px 30px;
+        font-weight: 700;
+    }
+}
+.btn-area__btn:hover{
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(236,224,255,1) 47%, rgba(148,187,233,1) 100%);
+    background-size: 400% 400%;
+    animation: gradient 6s ease infinite;
+    @keyframes gradient {
+        0% {
+            background-position: 0 50%;
+        } 
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0 50%;
+        }
+        
+    }
+    
+    
+}

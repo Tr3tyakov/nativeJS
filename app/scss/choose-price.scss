@@ -1,0 +1,50 @@
+
+.choose-products {
+    position: relative;
+
+}
+
+
+.range-input {
+    padding: 10px;
+    width: 260px;
+    border: none;
+    background: transparent;
+    border:1px solid white;
+
+    background: #29907f00;
+    outline: none;
+    &:hover{
+        -webkit-appearance: none;
+    }
+    
+   
+       
+}
+
+
+.number-area{
+    display: flex;
+    &__input{
+        display: flex;
+        outline: none;
+        font-size: 16px;
+    
+        height: 55px;
+        width: 120px;
+        padding: 5px;
+        margin: 20px 20px 20px 0
+    }
+}
+
+
+
+.range-btn{
+    padding: 15px 71px;
+    background-color: black;
+    border: none;
+    outline: none;
+    color: white;
+    border-radius: 4px;
+    
+}

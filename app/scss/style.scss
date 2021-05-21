@@ -1,0 +1,47 @@
+@import 'vars';
+@import 'libs';
+@import 'fonts';
+@import 'global';
+@import 'header-slider';
+@import 'main-shopping';
+@import 'choose-price';
+
+.container { 
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+.background-nav{
+    background: antiquewhite; 
+    border-bottom:1px solid #8e9eab21;
+}
+
+.nav-info {
+    display: flex;
+    justify-content: space-between;
+    margin-left: auto;
+    align-items: center;
+    
+    &__item{
+        padding: 10px;
+    }
+}
+
+.img-basket {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    cursor: pointer;
+}    
+
+.information-site{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+}    
+
+
+
+
+@import 'media';
