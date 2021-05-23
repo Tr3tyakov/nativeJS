@@ -1,13 +1,15 @@
 import CATALOG from "./Catalog/Catalog.js"
 import ROOT_SHOPPING from "./Root/root.js"
 import slider from './components/headerSlider.js'
-import rangeImport from './components/rangeInput.js'
+import range from './components/rangeInput.js'
+import amount from './components/amountProducts.js'
 import { changeOnFourCubes, changeOnTwoCubes } from './components/changeDirectory.js'
 
 
 
 class Catalog {
     render(catalog) {
+
         let html = ''
         catalog.forEach(({ item, title, img, about, price }) => {
             html += `
@@ -32,19 +34,33 @@ class Catalog {
             </div>
             `
         })
-        // ROOT_SHOPPING.innerHTML = html
+        ROOT_SHOPPING.innerHTML = html
     }
 
     changeDirectory() {
         let html = ''
         CATALOG.forEach(({ item, title, img, about, price }) => {
             html += `
-
+            
+            <div class="shopping-item item-shopping">
+            <div class="item-area area-item">
+            <div class="images">
             <img class="images__item images__item--active" src="${img[0]}" alt="#">
             <img class="images__item" src="${img[1]}" alt="#">
             <img class="images__item" src="${img[2]}" alt="#">
-
+            </div>
+            <div class="navigation">
+            </div>
+            </div>
+            <div class="information-item item-information">
+            <h2 class="information-item__title">${title}</h2>
+            <p class="information-item__about">${about}</p>
+            <div class="information-item__price">${price.toLocaleString('ru')}₽</div>
+            <div class="btn-area">
             <button class="btn-area__btn">Добавить в корзину</button>
+            </div>
+            </div>
+            </div>
             `
         })
         ROOT_SHOPPING.innerHTML = html
@@ -111,4 +127,11 @@ ChooseProductBtn.addEventListener('click', () => {
 
 changeOnFourCubes.addEventListener('click', () => {
     catalogPage.changeDirectory()
+    const products = document.querySelectorAll('.shopping-item')
+    catalogPage.renderDots(products)
+})
+
+
+changeOnTwoCubes.addEventListener('click', () => {
+    catalogPage.render(CATALOG)
 })
