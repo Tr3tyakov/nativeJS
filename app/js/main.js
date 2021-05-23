@@ -1,39 +1,35 @@
 import CATALOG from "./Catalog/Catalog.js"
 import ROOT_SHOPPING from "./Root/root.js"
 import slider from './components/header-slider.js'
+import rangeImport from './components/range-input.js'
 
-
-const rangeBtn = document.querySelector('.range-btn')
-const rangeInput = document.querySelector('.range-input')
-
-let sortCatalog = CATALOG
 
 
 class Catalog {
-    render() {
+    render(catalog) {
         let html = ''
-        CATALOG.forEach(({ item, title, firstImg, secondImg, thirdIMg, about, price }) => {
+        catalog.forEach(({ item, title, img, about, price }) => {
             html += `
             <div class="shopping-item">
             <div class="item-area">
-                <div class="images">
-                    <img class="images__item images__item--active" src="${firstImg}" alt="#">
-                    <img class="images__item" src="${secondImg}" alt="#">
-                    <img class="images__item" src="${thirdIMg}" alt="#">
-                </div>
-                <div class="navigation">
-                </div>
+            <div class="images">
+            <img class="images__item images__item--active" src="${img[0]}" alt="#">
+            <img class="images__item" src="${img[1]}" alt="#">
+            <img class="images__item" src="${img[2]}" alt="#">
+            </div>
+            <div class="navigation">
+            </div>
             </div>
             <div class="information-item">
-                <h2 class="information-item__title">${title}</h2>
-                <p class="information-item__about">${about}</p>
-                <div class="information-item__price">${price.toLocaleString('ru')}₽</div>
-                <div class="btn-area">
-                    <button class="btn-area__btn">Добавить в корзину</button>
-                </div>
+            <h2 class="information-item__title">${title}</h2>
+            <p class="information-item__about">${about}</p>
+            <div class="information-item__price">${price.toLocaleString('ru')}₽</div>
+            <div class="btn-area">
+            <button class="btn-area__btn">Добавить в корзину</button>
             </div>
-        </div>
-        `
+            </div>
+            </div>
+            `
         })
         ROOT_SHOPPING.innerHTML = html
     }
@@ -72,9 +68,9 @@ class Catalog {
             })
         })
     }
-    ChoosePrice() {
-        sortCatalog = CATALOG.filter(e => e.price > rangeInput.value)
-        catalogPage.render()
+    ChoosePrice(min, max) {
+        let sortCatalog = CATALOG.filter(e => e.price < max && e.price > min)
+        catalogPage.render(sortCatalog)
 
         const products = document.querySelectorAll('.shopping-item')
         catalogPage.renderDots(products)
@@ -82,13 +78,16 @@ class Catalog {
 }
 
 let catalogPage = new Catalog()
-catalogPage.render()
+catalogPage.render(CATALOG)
 
 const products = document.querySelectorAll('.shopping-item')
 catalogPage.renderDots(products)
 
 
-// rangeBtn.addEventListener('click', () => {
-//     catalogPage.ChoosePrice()
-// })
+const ChooseProductBtn = document.querySelector('.choose-products__btn')
 
+ChooseProductBtn.addEventListener('click', () => {
+    let minInput = document.querySelector('.inputs-number__number1')
+    let maxInput = document.querySelector('.inputs-number__number2')
+    catalogPage.ChoosePrice(minInput.value, maxInput.value)
+})

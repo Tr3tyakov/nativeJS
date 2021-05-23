@@ -9,25 +9,27 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    
 }
 
 .shopping-item{
     position: relative;
     max-width: 550px;
-    height: 100%;
     box-shadow: 0 15px 15px rgba(0, 0, 0, 0.493);
     border:1px solid rgba(49, 49, 48, 0.233);
     border-radius: 5px;
     display: flex;
     margin: 1em 1em;
     overflow: hidden;
+    
 }
+
 .item-area{
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 70%;
     overflow: hidden;
     margin: 10px;
 }
@@ -75,15 +77,14 @@
     background: antiquewhite;
     border-left:1px solid rgba(187, 168, 143, 0.644);
     padding: 10px;
-    width: 100%;
+    max-width: 450px;
+    height: 100%;
    &__title{
-    display: flex;
-    justify-content: center;
 
    }
    &__about{
-    display: flex;
-    justify-content: center;
+    max-width: 400px;
+    height: 100%;
    }
    &__price{
        font-weight: 500;
@@ -99,18 +100,22 @@
     &__btn{
         border: none;
         background: black;
-     
         color: rgb(255, 255, 255);
-        border-radius: 4px;
+        border-radius: 3px;
         margin: 10px 0 0 0;
-        padding: 10px 30px;
-        font-weight: 700;
+        padding: 10px 40px;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 500;
+        transition: all .1s ease;
     }
 }
 .btn-area__btn:hover{
     background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(236,224,255,1) 47%, rgba(148,187,233,1) 100%);
     background-size: 400% 400%;
     animation: gradient 6s ease infinite;
+    color: rgb(0, 0, 0);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.726);
     @keyframes gradient {
         0% {
             background-position: 0 50%;
@@ -121,8 +126,34 @@
         100% {
             background-position: 0 50%;
         }
-        
     }
-    
-    
 }
+
+//shop-navigation
+
+.shop-navigation{
+    height: 50px;
+}
+
+.shop-list{
+    display: flex;
+    justify-content: space-around;
+
+    &__link{
+        padding: 0 15px;
+        font-size: 18px;
+        font-weight: 400;
+        color: black;
+        cursor: pointer;
+    }
+}
+
+
+.products {
+    margin: 10px 0;
+    display: grid;
+    grid-template-columns: 1fr 10fr;
+   
+}
+
+
