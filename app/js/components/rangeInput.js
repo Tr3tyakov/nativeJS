@@ -1,7 +1,6 @@
 
 setTimeout(init('.range', '.range__btn-left', '.range__between-btn', '.range__btn-right', '.inputs-number__number1', '.inputs-number__number2'), 0)
 
-
 function init(sldr, lft, btwn, rght, inp1, inp2) {
     let slider = document.querySelector(sldr)
     let left = document.querySelector(lft)
@@ -169,8 +168,6 @@ function init(sldr, lft, btwn, rght, inp1, inp2) {
 
     }
 
-
-
     function getParametrs(element) {
         let value = element.getBoundingClientRect()
         return {
@@ -180,10 +177,6 @@ function init(sldr, lft, btwn, rght, inp1, inp2) {
     }
 
 }
-
-
-
-
 
 
 export default 'range-unput'

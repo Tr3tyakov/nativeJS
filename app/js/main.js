@@ -1,7 +1,8 @@
 import CATALOG from "./Catalog/Catalog.js"
 import ROOT_SHOPPING from "./Root/root.js"
-import slider from './components/header-slider.js'
-import rangeImport from './components/range-input.js'
+import slider from './components/headerSlider.js'
+import rangeImport from './components/rangeInput.js'
+import { changeOnFourCubes, changeOnTwoCubes } from './components/changeDirectory.js'
 
 
 
@@ -31,8 +32,24 @@ class Catalog {
             </div>
             `
         })
+        // ROOT_SHOPPING.innerHTML = html
+    }
+
+    changeDirectory() {
+        let html = ''
+        CATALOG.forEach(({ item, title, img, about, price }) => {
+            html += `
+
+            <img class="images__item images__item--active" src="${img[0]}" alt="#">
+            <img class="images__item" src="${img[1]}" alt="#">
+            <img class="images__item" src="${img[2]}" alt="#">
+
+            <button class="btn-area__btn">Добавить в корзину</button>
+            `
+        })
         ROOT_SHOPPING.innerHTML = html
     }
+
 
     renderDots(elements) {
         elements.forEach(element => {
@@ -85,9 +102,13 @@ catalogPage.renderDots(products)
 
 
 const ChooseProductBtn = document.querySelector('.choose-products__btn')
-
 ChooseProductBtn.addEventListener('click', () => {
     let minInput = document.querySelector('.inputs-number__number1')
     let maxInput = document.querySelector('.inputs-number__number2')
     catalogPage.ChoosePrice(minInput.value, maxInput.value)
+})
+
+
+changeOnFourCubes.addEventListener('click', () => {
+    catalogPage.changeDirectory()
 })
