@@ -1,15 +1,16 @@
 import CATALOG from "./Catalog/Catalog.js"
-import ROOT_SHOPPING from "./Root/root.js"
-import slider from './components/headerSlider.js'
-import range from './components/rangeInput.js'
-import amount from './components/amountProducts.js'
-import { changeOnFourCubes, changeOnTwoCubes } from './components/changeDirectory.js'
-
+import slider from './components/header-slider.js'
+import range from './components/range-input.js'
+import { renderDots } from './components/navigation-dots.js'
+import { changeOnFourCubes, changeOnTwoCubes, target } from './components/change-directory.js'
+import { sortProductsIncrease, sortProductsDecrease, ChoosePrice } from './components/sort-products.js'
+import { ROOT_SHOPPING, increaseBtn, decreaseBtn, ChooseProductBtn } from './components/variable.js'
+import localStorage from './components/localStorage.js'
 
 
 class Catalog {
-    render(catalog) {
 
+    render(catalog) {
         let html = ''
         catalog.forEach(({ item, title, img, about, price }) => {
             html += `
@@ -28,18 +29,21 @@ class Catalog {
             <p class="information-item__about">${about}</p>
             <div class="information-item__price">${price.toLocaleString('ru')}₽</div>
             <div class="btn-area">
-            <button class="btn-area__btn">Добавить в корзину</button>
+            <button class="btn-area__btn" data-index="${item}">Добавить в корзину</button>
             </div>
             </div>
             </div>
             `
         })
         ROOT_SHOPPING.innerHTML = html
+        let products = document.querySelectorAll('.shopping-item')
+        renderDots(products)
+
     }
 
-    changeDirectory() {
+    changeDirectory(catalog) {
         let html = ''
-        CATALOG.forEach(({ item, title, img, about, price }) => {
+        catalog.forEach(({ item, title, img, about, price }) => {
             html += `
             
             <div class="shopping-item item-shopping">
@@ -57,81 +61,108 @@ class Catalog {
             <p class="information-item__about">${about}</p>
             <div class="information-item__price">${price.toLocaleString('ru')}₽</div>
             <div class="btn-area">
-            <button class="btn-area__btn">Добавить в корзину</button>
+            <button class="btn-area__btn" data-index="${item}">Добавить в корзину</button>
             </div>
             </div>
             </div>
             `
         })
         ROOT_SHOPPING.innerHTML = html
+        let products = document.querySelectorAll('.shopping-item')
+        renderDots(products)
+
     }
 
-
-    renderDots(elements) {
-        elements.forEach(element => {
-            let images = element.querySelectorAll('.images__item')
-            let navigation = element.querySelector('.navigation')
-            images.forEach((img, index) => {
-                img.setAttribute('data-attribute', index)
-                navigation.innerHTML += `<div class="navigation__circle ${index == 0 ? "navigation__circle--active" : ''}"data-attribute=${index}></div>`
-            })
-            let circles = element.querySelectorAll('.navigation__circle')
-            circles.forEach(dot => {
-
-                dot.addEventListener('mouseenter', (e) => {
-                    images.forEach(e => {
-                        e.classList.remove('images__item--active')
-                    })
-                    circles.forEach(e => {
-                        e.classList.remove('navigation__circle--active')
-                    })
-                    dot.classList.add('navigation__circle--active')
-                    element.querySelector(`.images__item[data-attribute="${e.currentTarget.dataset.attribute}"]`).classList.add('images__item--active')
-                })
-                dot.addEventListener('mouseleave', () => {
-                    images.forEach(e => {
-                        e.classList.remove('images__item--active')
-                    })
-                    circles.forEach(e => {
-                        e.classList.remove('navigation__circle--active')
-                    })
-                    circles[0].classList.add('navigation__circle--active')
-                    element.querySelector(`.images__item[data-attribute="0"]`).classList.add('images__item--active')
-                })
-            })
-        })
-    }
-    ChoosePrice(min, max) {
-        let sortCatalog = CATALOG.filter(e => e.price < max && e.price > min)
-        catalogPage.render(sortCatalog)
-
-        const products = document.querySelectorAll('.shopping-item')
-        catalogPage.renderDots(products)
-    }
 }
 
 let catalogPage = new Catalog()
-catalogPage.render(CATALOG)
 
-const products = document.querySelectorAll('.shopping-item')
-catalogPage.renderDots(products)
+//render start catalogPage
+catalogPage.render(sortProductsIncrease(CATALOG))
 
+//sort price
+let minInput
+let maxInput
+let sortCatalog = CATALOG
 
-const ChooseProductBtn = document.querySelector('.choose-products__btn')
 ChooseProductBtn.addEventListener('click', () => {
-    let minInput = document.querySelector('.inputs-number__number1')
-    let maxInput = document.querySelector('.inputs-number__number2')
-    catalogPage.ChoosePrice(minInput.value, maxInput.value)
+    minInput = document.querySelector('.inputs-number__number1')
+    maxInput = document.querySelector('.inputs-number__number2')
+    sortCatalog = ChoosePrice(minInput.value, maxInput.value)
+    if (increaseTarget == true) {
+        sortProductsIncrease(sortCatalog)
+    }
+    else {
+        sortProductsDecrease(sortCatalog)
+    }
+    if (target == true) {
+        catalogPage.render(sortCatalog)
+    }
+    else {
+        catalogPage.changeDirectory(sortCatalog)
+    }
 })
 
-
+//change directory
 changeOnFourCubes.addEventListener('click', () => {
-    catalogPage.changeDirectory()
-    const products = document.querySelectorAll('.shopping-item')
-    catalogPage.renderDots(products)
+    catalogPage.changeDirectory(sortCatalog)
 })
-
 
 changeOnTwoCubes.addEventListener('click', () => {
-    catalogPage.render(CATALOG)
+    catalogPage.render(sortCatalog)
 })
+
+//increase|decrease
+let increaseTarget = true
+increaseBtn.addEventListener('click', () => {
+    decreaseBtn.classList.remove('sort-price__decrease--active')
+    increaseBtn.classList.add('sort-price__increase--active')
+    sortProductsIncrease(sortCatalog)
+    if (target == true) {
+        catalogPage.render(sortCatalog)
+    }
+    else {
+        catalogPage.changeDirectory(sortCatalog)
+    }
+    increaseTarget = true
+
+})
+
+decreaseBtn.addEventListener('click', () => {
+    decreaseBtn.classList.add('sort-price__decrease--active')
+    increaseBtn.classList.remove('sort-price__increase--active')
+    sortProductsDecrease(sortCatalog)
+    if (target == true) {
+        catalogPage.render(sortCatalog)
+    }
+    else {
+        catalogPage.changeDirectory(sortCatalog)
+    }
+    increaseTarget = false
+})
+
+
+
+let btnProducts = document.querySelectorAll('.btn-area__btn')
+btnProducts.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        localStorage.setItem("item", `${e.target.dataset.index}`)
+        btn.classList.add('btn-area__btn--active')
+
+    })
+})
+
+function check() {
+    btnProducts.forEach(e => {
+        if (localStorage.hasOwnProperty()) {
+            e.innerHTML = "Добавлено в корзину"
+            e.classList.add('btn-area__btn--active')
+        }
+        else {
+            e.innerHTML = "Добавить в корзину"
+            e.classList.remove('btn-area__btn-active')
+        }
+    })
+}
+
+check()

@@ -133,8 +133,7 @@ function init(sldr, lft, btwn, rght, inp1, inp2) {
             let inside = slider.offsetWidth - right.offsetWidth
 
 
-            console.log('marginLeft', marginLeft);
-            console.log('leftCords', (leftCords.left + left.offsetWidth - sliderCords.left));
+
             if (marginLeft < leftCords.left + left.offsetWidth - sliderCords.left) {
                 marginLeft = leftCords.left + left.offsetWidth - sliderCords.left
             }

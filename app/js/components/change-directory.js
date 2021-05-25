@@ -18,16 +18,19 @@ changeOnTwoCubes.addEventListener('mouseout', () => {
 })
 
 //click
+let target = true
 changeOnFourCubes.addEventListener('click', () => {
     changeOnTwoCubes.classList.remove('change-position__two-cubes--active')
     changeOnFourCubes.classList.add('change-position__four-cubes--active')
+    target = false
 })
 
 changeOnTwoCubes.addEventListener('click', () => {
     changeOnFourCubes.classList.remove('change-position__four-cubes--active')
     changeOnTwoCubes.classList.add('change-position__two-cubes--active')
+    target = true
 })
 
 
 
-export { changeOnFourCubes, changeOnTwoCubes }
+export { changeOnFourCubes, changeOnTwoCubes, target }

@@ -29,9 +29,10 @@
     margin: 10px 0;
     display: grid;
     grid-template-columns: 1fr 10fr 60px;
-    grid-template-rows: 50px 10fr;
+    grid-template-rows: 50px 35px 10fr;
     grid-template-areas: 'title title changePosition'
-                         'choose shopping shopping';
+                        ' . sortPrice .'
+                         'choose shopping .';
     &__title{                 
         display: flex;
         align-items: center;
@@ -295,14 +296,92 @@
         }    
     }    
 }    
+.btn-area__btn--active {
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(236,224,255,1) 47%, rgba(148,187,233,1) 100%);
+    background-size: 400% 400%;
+    animation: gradient 6s ease infinite;
+    color: rgb(0, 0, 0);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.726);
+    @keyframes gradient {
+        0% {
+            background-position: 0 50%;
+        }     
+        50% {
+            background-position: 100% 50%;
+        }    
+        100% {
+            background-position: 0 50%;
+        }    
+    }  
+}
+
+//sort price 
+
+.sort-price {
+    width: 10fr;
+    margin: 0 1em;
+    display: flex;
+    align-items: center;
+    flex: 1 1 100px;
+    justify-content: left;
+    grid-area: sortPrice;
+    
+    &__btn{
+       margin: 5px 0 0 0;
+    }
+    &__title {
+        font-weight: 400;
+        font-size: 18px;
+        margin-right: 1em ;
+
+    }
+    &__increase{
+        margin-right: 1em;
+    }
+    &__decrease{
+       
+    }
+}
 
 
+.sort-price__btn {
+    border: none;
+    background: initial;
+    color: black;
+    border-radius: 3px;
+    padding: 5px 20px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 400;
+    transition: all .1s ease;
+    outline: none;
+    &:hover{
+        background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(236,224,255,1) 47%, rgba(148,187,233,1) 100%);
+        background-size: 400% 400%;
+        animation: gradient 6s ease infinite;
+        color: rgb(0, 0, 0);
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.726);
+        @keyframes gradient {
+            0% {
+            background-position: 0 50%;
+            }     
+            50% {
+            background-position: 100% 50%;
+            }    
+            100% {
+            background-position: 0 50%;
+            }    
+        } 
+    }
+}
 
 
+.sort-price__increase--active{
+    background-color: black;
+    color: #fff;
+}
 
-
-
-
-
-
-
+.sort-price__decrease--active{
+    background-color: black;
+    color: #fff;
+}
