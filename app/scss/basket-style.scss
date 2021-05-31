@@ -1,0 +1,246 @@
+
+
+//modal
+.basket-modal{
+    display: none;
+    position: absolute;
+    width: 400px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.393);
+    margin: 10px 0 ;
+    top: 30px;
+    right: 0;
+    z-index: 20;
+    max-height: 600px;
+    overflow: hidden;
+    border-radius: 4px;
+
+    
+}
+.basket-modal--active{
+    display: block;
+}
+
+
+//basket-shopp
+.basket-item{
+    position: relative;
+    width: 100%;
+    display: flex;
+    margin: 1em 0;
+    overflow: hidden;
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.467);
+    &:first-child{
+        margin: 0;
+    }
+    &:last-child{
+        margin-bottom: 5px ;
+    }
+}     
+
+.basket-information-item{
+    border-left:0;
+   &__title{
+    font-size: 18px;
+   }    
+}   
+
+.basket {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    width: 35px;
+    height: 100%;
+    &__circle{
+        position: absolute;
+        top: 10px;
+        right: 9px;
+        width: 22px;
+        height: 22px;
+        border-radius: 10%;
+        color: #fff;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: 500;
+    }
+    &__img{
+        width: 30px;
+        height: 30px;
+        transition: all .3s ease;
+    }    
+}
+//title 
+.total-amount{
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid rgba(204, 204, 204, 0.507);
+    &__title{
+        padding: 10px;
+        font-size: 20px;
+    }
+}
+
+//product-basket
+.basket-product{
+    height: 500px;
+    overflow-y: scroll;
+    &::-webkit-scrollbar{
+        width: 5px;
+    }
+}
+
+//total-price
+.total-price{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__btn{
+        padding: 12px 25px;
+        border-radius: 4px;
+        font-size: 16px;
+        border: none;
+        background-color: black;
+        color: #fff;
+        cursor: pointer;
+    }
+}
+.total-price__btn:hover{
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(236,224,255,1) 47%, rgba(148,187,233,1) 100%);
+    background-size: 400% 400%;
+    animation: gradient 6s ease infinite;
+    color: rgb(0, 0, 0);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.726);
+    @keyframes gradient {
+        0% {
+            background-position: 0 50%;
+        }     
+        50% {
+            background-position: 100% 50%;
+        }    
+        100% {
+            background-position: 0 50%;
+        }    
+    } 
+}
+
+//plus-minus
+.basket-count{
+    display: grid;
+    width: 70%;
+    height: 30px;
+    border: 1px solid rgba(204, 204, 204, 0.685);
+    grid-template-columns: 1fr 4fr 1fr;
+    &__plus{
+        height: 100%;
+        font-size: 18px;
+        font-weight: 300;
+    }
+    &__number{
+        border: 0;
+        width: 100%;
+        font-size: 15px;
+        outline: none;
+        text-align: center;
+    }   
+    &__minus{
+        height: 100%;
+        font-size: 19px;
+        font-weight: 400;
+    }
+    &__tooltip{
+        position: absolute;
+        display: none;
+        align-items: center;
+        
+        top: 64px;
+        right: 62px;
+        max-width: 180px;
+        height: 40px;
+        font-size: 14px;
+        padding: 2px 6px;
+        background-color: #fff;
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.25);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        border-radius: 2px;
+        overflow: hidden;
+    }
+}
+
+.basket-count--active{
+    display: flex;
+}
+
+
+//btn-count 
+.btn-basket-count{
+    width: 35px;
+    outline: none;
+    border: 0;
+    background: #fff;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    transition: all .3s ease;
+    &:hover{
+        background-color: rgb(0, 0, 0);
+        color: #fff;
+    }  
+   
+}
+
+//btn-basket-delete
+.btn-basket-area{
+    position: absolute;
+    top: 3px;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    padding: 2px;
+    z-index: 15;
+    &__delete{
+        position: absolute;
+        top: 50%;
+        width: 15px;
+        height: 2px;
+        background-color: #ccc;
+    }    
+    
+}
+.btn-basket-area:hover{
+    .btn-basket-area__delete{
+        background-color: #000;
+        transition: all .3s linear;
+    }
+}
+
+.btn-basket-area__delete:first-child{
+    transform: rotate(45deg);
+}
+
+.btn-basket-area__delete:last-child{
+    transform: rotate(-45deg);
+}
+
+
+.basket-count__plus--deactive{
+    color: #ccc;
+    cursor: no-drop;
+    &:hover{
+        background-color: #fff;
+        color: #ccc;
+    }
+}
+.basket-count__minus--deactive{
+    color: #ccc;
+    cursor: no-drop;
+    &:hover{
+        background-color: #fff;
+        color: #ccc;
+    }
+}

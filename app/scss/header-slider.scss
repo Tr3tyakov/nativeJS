@@ -3,8 +3,10 @@
     max-width: 1200px;
     height: 600px;
     padding: 0 10px;
-    margin: 20px auto;
+    margin: 90px auto 40px;
     overflow: hidden;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.393);
+
 }
 
 .sliders{
@@ -48,7 +50,7 @@
         transition: all .1s linear;
         cursor: pointer;
     }
-    z-index: 100;
+    z-index: 5;
 }
 
 .navigation-circles__circle:hover{
@@ -91,7 +93,7 @@
     display: flex;
         width: 60px;
         height: 60px;
-        z-index: 100;
+        z-index: 5;
         cursor: pointer;
         transition: all .1s ease-in;
     }

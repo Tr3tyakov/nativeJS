@@ -1,11 +1,3 @@
-import CATALOG from '../Catalog/Catalog.js'
-
-let sortCatalog = CATALOG
-
-function ChoosePrice(min, max) {
-    return sortCatalog = CATALOG.filter(e => e.price < max && e.price > min)
-}
-
 function sortProductsIncrease(array) {
     return array.sort((a, b) => a.price - b.price)
 }
@@ -13,4 +5,21 @@ function sortProductsDecrease(array) {
     return array.sort((a, b) => b.price - a.price)
 }
 
-export { sortProductsIncrease, sortProductsDecrease, ChoosePrice }
+function ProductDiscount(price, percent) {
+    let lastPrice = ''
+    if (percent == null) {
+        percent = ''
+    } else {
+        lastPrice = price + price / 100 * percent + "₽"
+        percent += '%'
+    }
+    return { lastPrice, percent }
+}
+function ProductRaiting(raiting) {
+    let star = `<img class="raiting__star" src="./images/products/star.png" alt="">`
+    let amountStar = star.repeat(raiting)
+    return amountStar
+}
+
+
+export { sortProductsIncrease, sortProductsDecrease, ProductDiscount, ProductRaiting }

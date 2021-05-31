@@ -1,25 +1,40 @@
-let btnProducts = document.querySelectorAll('.btn-area__btn')
-btnProducts.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        localStorage.setItem("item", `${e.target.dataset.index}`)
-        btn.classList.add('btn-area__btn--active')
+let LocalStorageAdd = false
 
-    })
-})
-
-function check() {
-    btnProducts.forEach(e => {
-        if (localStorage.hasOwnProperty()) {
-            e.innerHTML = "Добавлено в корзину"
-            e.classList.add('btn-area__btn--active')
-        }
-        else {
-            e.innerHTML = "Добавить в корзину"
-            e.classList.remove('btn-area__btn-active')
-        }
-    })
+let objLocalStorage = {
+    LocalStorageAdd: false
 }
 
-check()
+class LocalStorage {
+    constructor() {
+        this.product = 'products'
+    }
 
-export default 'localStorage'
+    getItem() {
+        let productsLocalStorage = localStorage.getItem(this.product)
+        if (productsLocalStorage !== null) {
+            return JSON.parse(productsLocalStorage)
+        }
+        return []
+    }
+
+    setItem(id) {
+        let products = this.getItem()
+        let index = products.indexOf(id)
+        if (index == -1) {
+            products.push(id)
+            LocalStorageAdd = true
+        }
+        else {
+            products.splice(index, 1)
+            LocalStorageAdd = false
+        }
+        localStorage.setItem(this.product, JSON.stringify(products))
+        return { products, LocalStorageAdd }
+    }
+
+}
+let localStorageProducts = new LocalStorage()
+
+
+
+export { localStorageProducts }

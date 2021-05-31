@@ -17,20 +17,16 @@ changeOnTwoCubes.addEventListener('mouseout', () => {
     changeOnTwoCubes.style.right = '0'
 })
 
-//click
-let target = true
-changeOnFourCubes.addEventListener('click', () => {
-    changeOnTwoCubes.classList.remove('change-position__two-cubes--active')
-    changeOnFourCubes.classList.add('change-position__four-cubes--active')
-    target = false
-})
+//phone
 
-changeOnTwoCubes.addEventListener('click', () => {
-    changeOnFourCubes.classList.remove('change-position__four-cubes--active')
-    changeOnTwoCubes.classList.add('change-position__two-cubes--active')
-    target = true
+changeOnFourCubes.addEventListener('touchstart', () => {
+    console.log(1);
 })
 
 
+//changeDirectory
+let objTarget = {
+    target: true
+}
 
-export { changeOnFourCubes, changeOnTwoCubes, target }
+export { changeOnFourCubes, changeOnTwoCubes, objTarget }
