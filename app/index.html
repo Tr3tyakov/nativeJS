@@ -7,8 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=KoHo:ital,wght@0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <title>Shop</title>
 </head>
@@ -18,14 +17,84 @@
         <div class="background-nav">
             <div class="container">
                 <div class="information-site">
+                    <div class="burger-menu">
+                        <span class="burger-menu__line"></span>
+                    </div>
+                    <div class="burger-modal">
+                        <div class="burger-title">
+                            <h2 class="burger-title__title">г. Санкт-Петербург</h2>
+                        </div>
+                        <div class="burger-list">
+                            <div class="burger-item">
+                                <h3 class="burger-item__title">Часы</h3>
+                                <img class="burger-arrow" src="./images/burger/arrow.svg" alt="arrowRight">
+                            </div>
+                            <div class="burger-item">
+                                <h2 class="burger-item__title">Украшения</h2>
+                                <img class="burger-arrow" src="./images/burger/arrow.svg" alt="arrowRight">
+                            </div>
+                            <div class="burger-item">
+                                <h3 class="burger-item__title">Premium</h3>
+                                <img class="burger-arrow" src="./images/burger/arrow.svg" alt="arrowRight">
+                            </div>
+                            <div class="burger-item">
+                                <h2 class="burger-item__title">Акции</h2>
+                                <img class="burger-arrow" src="./images/burger/arrow.svg" alt="arrowRight">
+                            </div>
+                            <div class="burger-item">
+                                <h2 class="burger-item__title">Бестселлеры</h2>
+                                <img class="burger-arrow" src="./images/burger/arrow.svg" alt="arrowRight">
+                            </div>
+                        </div>
+                        <div class="burger-information">
+                            <div class="burger-information__item">Гарантия</div>
+                            <div class="burger-information__item">Доставка</div>
+                            <div class="burger-information__item item-red">SALE</div>
+                        </div>
+                        <div class="burger-list">
+                            <div class="burger-item">
+                                <h3 class="burger-item__title">Информация</h3>
+                                <img class="burger-arrow" src="./images/burger/arrow.svg" alt="arrowRight">
+                            </div>
+                            <div class="burger-item">
+                                <h3 class="burger-item__title">Избранное</h3>
+                                <img class="burger-arrow" src="./images/burger/arrow.svg" alt="arrowRight">
+                            </div>
+                            <div class="burger-item">
+                                <h3 class="burger-item__title">Магазины</h3>
+                                <img class="burger-arrow" src="./images/burger/arrow.svg" alt="arrowRight">
+                            </div>
+                            <div class="burger-item">
+                                <h3 class="burger-item__title">Оплата</h3>
+                                <img class="burger-arrow" src="./images/burger/arrow.svg" alt="arrowRight">
+                            </div>
+                            <div class="burger-item">
+                                <h3 class="burger-item__title">Избранное</h3>
+                                <img class="burger-arrow" src="./images/burger/arrow.svg" alt="arrowRight">
+                            </div>
+                            <div class="burger-item">
+                                <h3 class="burger-item__title">Кабинет</h3>
+                                <img class="burger-arrow" src="./images/burger/arrow.svg" alt="arrowRight">
+                            </div>
+                            <div class="burger-item">
+                                <h3 class="burger-item__title">Избранное</h3>
+                                <img class="burger-arrow" src="./images/burger/arrow.svg" alt="arrowRight">
+                            </div>
+                        </div>
+                    </div>
                     <ul class="nav-info">
                         <li class="nav-info__item">Гарантия</li>
                         <li class="nav-info__item">Бесплатная доставка</li>
                         <li class="nav-info__item">Акции</li>
                         <li class="nav-info__item">
-                            <img class="img-basket" src="images/site/basket.svg" alt="">
-                        </li>
                     </ul>
+                    <div class="basket">
+                        <img class="basket__img" src="images/site/basket.svg" alt="">
+                        <div class="basket__circle"></div>
+                    </div>
+                    <div class="basket-modal">
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -61,42 +130,101 @@
                 </div>
             </div>
         </div>
+        <!-- shop -->
         <section class="main-shop">
             <div class="container-shopping">
-                <div class="shopping">
+                <div class="shop-navigation">
+                    <ul class="shop-list ">
+                        <li class="shop-list__link">Украшения</li>
+                        <li class="shop-list__link">Бестселлеры</li>
+                        <li class="shop-list__link">Акции</li>
+                        <li class="shop-list__link">Часы</li>
+                        <li class="shop-list__link">Информация</li>
+                    </ul>
                 </div>
+                <div class="products">
+                    <div class="products__title">
+                        <h2 class="name-products">Каталог часов</h2>
+                        <p class="amount-products">1042 изделия</p>
+                    </div>
+                    <div class="filters">
+                        <div class="filters__title">Фильтры</div>
+                        <div class="filters__modal">
+                            <div class="choose-products">
+                                <h2 class="title-price">Цена</h2>
+                                <div class="range">
+                                    <div class="range__between-btn"></div>
+                                    <div class="range__btn-left btn"></div>
+                                    <div class="range__btn-right btn"></div>
+                                </div>
+                                <div class="inputs-number">
+                                    <input class="inputs-number__number1 choose-products__input" placeholder="До"
+                                        type="number" min="0" max="100000">
+                                    <input class="inputs-number__number2 choose-products__input" placeholder="От"
+                                        type="number" min="0" max="100000">
+                                </div>
+                                <div class="choose-products__btn">Применить</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sort">
+                        <div class="sort-title">По возрастанию</div>
+                        <div class="sort-modal">
+                            <div class="sort-price">
+                                <div class="sort-price__title">Сортировать по:</div>
+                                <button class="sort-price__increase sort-price__increase--active sort-price__btn ">
+                                    По возрастанию
+                                    цены
+                                </button>
+                                <button class="sort-price__decrease sort-price__btn ">
+                                    По убыванию
+                                    цены
+                                </button>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="change-position">
+                        <div class="change-position__four-cubes">
+                            <span class="section-of-four"></span>
+                            <span class="section-of-four"></span>
+                            <span class="section-of-four"></span>
+                            <span class="section-of-four"></span>
+                        </div>
+                        <div class="change-position__two-cubes change-position__two-cubes--active">
+                            <span class="section-of-two"></span>
+                            <span class="section-of-two"></span>
+                        </div>
+                    </div>
+
+
+                    <!-- JS shop -->
+                    <div class="shopping">
+                    </div>
+
+                </div>
             </div>
         </section>
-
+        <section>
+            <div class="container">
+                <div class="titles-slider">
+                    <h3 class="title-item">Украшения</h3>
+                    <h3 class="title-item">Часы</h3>
+                    <h3 class="title-item">Люкс</h3>
+                </div>
+                <div class="touch-slider">
+                    <div class="touch-sliders">
+                        <div class="slide">
+                            <div class="slide-title"></div>
+                            <img src="" alt="">
+                            <button class="slide-btn"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </header>
     <script type="module" src="js/main.js"></script>
 </body>
 
 </html>
-
-
-<!-- <div class="shopping-item">
-    <div class="item-area">
-        <div class="images">
-            <img class="images__item" src="images/products/Sokolov.jpg" alt="#">
-            <img class="images__item" src="images/products/Sokolov.jpg" alt="#">
-            <img class="images__item" src="images/products/Sokolov.jpg" alt="#">
-        </div>
-        <div class="navigation">
-            <div class="navigation__circle navigation__circle--active"></div>
-            <div class="navigation__circle"></div>
-            <div class="navigation__circle"></div>
-        </div>
-    </div>
-    <div class="information-item">
-        <h2 class="information-item__title">XFSFIASDFDSA</h2>
-        <p class="information-item__about">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Vitae alias veniam quam id, aliquid sed officiis a! Sequi impedit doloremque molestias
-            ut iusto, nihil ipsa, nobis sint recusandae rem placeat.</p>
-        <div class="information-item__price">20 000₽</div>
-        <div class="btn-area">
-            <button class="btn-area__btn">Добавить в корзину</button>
-        </div>
-    </div>
-</div> -->

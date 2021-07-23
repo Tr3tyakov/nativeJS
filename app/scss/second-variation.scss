@@ -1,0 +1,36 @@
+.item-shopping{
+    flex: 0 0  300px;
+    overflow: initial;
+   
+}  
+
+.area-item{   
+    width: 100%;
+    height: 350px;  
+}    
+
+
+.item-shopping:hover{
+    .item-information{
+        display: block;
+        transition: all .3s linear;
+        
+       
+        
+    }
+}
+
+.item-information{
+    top: 99%;
+    position: absolute;
+    display: none;
+    width: 100%;
+    z-index: 8;
+    border: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 15px 15px rgba(0, 0, 0, 0.493);
+    
+    
+}
